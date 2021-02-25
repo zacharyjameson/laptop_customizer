@@ -8,6 +8,15 @@ const USCurrencyFormat = new Intl.NumberFormat("en-US", {
 });
 
 class FeatureName extends Component {
+      
+  updateFeature = (feature, newValue) => {
+    const selected = Object.assign({}, this.state.selected);
+    selected[feature] = newValue;
+    this.setState({
+      selected,
+    });
+  };
+
   render() {
     const features = Object.keys(this.props.features).map((feature, idx) => {
       const featureHash = feature + "-" + idx;
@@ -20,7 +29,7 @@ class FeatureName extends Component {
               id={itemHash}
               className="feature__option"
               name={slugify(feature)}
-              checked={item.name === this.state.selected[feature].name}
+              checked={item.name === this.props.features[feature].name}
               onChange={(e) => this.updateFeature(feature, item)}
             />
             <label htmlFor={itemHash} className="feature__label">
@@ -29,7 +38,13 @@ class FeatureName extends Component {
           </div>
         );
       });
-      return <FeatureTitle feature={features} options={options} featureHash={featureHash} />;
+      return (
+        <FeatureTitle
+          feature={feature}
+          options={options}
+          featureHash={featureHash}
+        />
+      );
     });
     return features;
   }

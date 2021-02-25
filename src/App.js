@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import FeatureName from './FeatureName';
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
+import slugify from 'slugify';
 
 import './App.css';
+import FeatureName from './FeatureName';
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -35,16 +36,7 @@ class App extends Component {
     }
   };
 
-  updateFeature = (feature, newValue) => {
-    const selected = Object.assign({}, this.state.selected);
-    selected[feature] = newValue;
-    this.setState({
-      selected
-    });
-  };
-
   render() {
-
     const summary = Object.keys(this.state.selected).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const selectedOption = this.state.selected[feature];
@@ -73,7 +65,7 @@ class App extends Component {
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
-            <FeatureName features={this.state.selected}/>
+            <FeatureName features={this.props.features} />
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>
