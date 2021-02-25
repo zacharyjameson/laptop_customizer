@@ -21,7 +21,7 @@ class FeatureName extends Component {
               className="feature__option"
               name={slugify(feature)}
               checked={item.name === this.props.features[feature].name}
-              onChange={this.props.updateFeature}
+              //onChange={this.props.updateFeature}
             />
             <label htmlFor={itemHash} className="feature__label">
               {item.name} ({USCurrencyFormat.format(item.cost)})

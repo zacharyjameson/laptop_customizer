@@ -6,7 +6,8 @@ import slugify from "slugify";
 
 import "./App.css";
 import FeatureName from "./FeatureName";
-import CartSummary from './CartSummary';
+import CartSummary from "./CartSummary";
+//import CartTotal from "./CartTotal";
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -47,6 +48,10 @@ class App extends Component {
 
   render() {
 
+    const total = Object.keys(this.state.selected).reduce(
+      (acc, curr) => acc + this.state.selected[curr].cost,
+      0
+    );
     return (
       <div className="App">
         <header>
@@ -63,10 +68,12 @@ class App extends Component {
           </form>
           <section className="main__summary">
             <h2>Your Cart</h2>
-            <CartSummary selected={this.state.selected}/>
+            <CartSummary selected={this.state.selected} />
             <div className="summary__total">
               <div className="summary__total__label">Total</div>
-             
+              <div className="summary__total__value">
+                {USCurrencyFormat.format(total)}
+              </div>
             </div>
           </section>
         </main>
@@ -76,4 +83,3 @@ class App extends Component {
 }
 
 export default App;
-
