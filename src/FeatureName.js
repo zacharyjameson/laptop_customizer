@@ -16,7 +16,7 @@ class FeatureName extends Component {
       selected,
     });
   };
-
+ 
   render() {
     const features = Object.keys(this.props.features).map((feature, idx) => {
       const featureHash = feature + "-" + idx;
