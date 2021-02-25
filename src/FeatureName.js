@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import slugify from 'slugify';
+import slugify from "slugify";
+import FeatureTitle from "./FeatureTitle";
 
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  });
+const USCurrencyFormat = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
 
 class FeatureName extends Component {
   render() {
@@ -28,16 +29,9 @@ class FeatureName extends Component {
           </div>
         );
       });
-
-      return (
-        <fieldset className="feature" key={featureHash}>
-          <legend className="feature__name">
-            <h3>{feature}</h3>
-          </legend>
-          {options}
-        </fieldset>
-      );
+      return <FeatureTitle feature={features} options={options} featureHash={featureHash} />;
     });
+    return features;
   }
 }
 
