@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import slugify from "slugify";
 
 import "./App.css";
-import FeatureName from "./FeatureName";
+import Feature from "./Feature";
 import CartSummary from "./CartSummary";
 //import CartTotal from "./CartTotal";
 
@@ -47,11 +47,11 @@ class App extends Component {
   };
 
   render() {
-
     const total = Object.keys(this.state.selected).reduce(
       (acc, curr) => acc + this.state.selected[curr].cost,
       0
     );
+
     return (
       <div className="App">
         <header>
@@ -60,10 +60,12 @@ class App extends Component {
         <main>
           <form className="main__form">
             <h2>Customize Your Laptop</h2>
-            <FeatureName
+            <Feature
               features={this.props.features}
-              onChange={(e) => this.updateFeature}
-              selected={this.state.selected}
+              onChange={(feature, newValue) =>
+                this.updateFeature(feature, newValue)
+              }
+              state={this.state.selected}
             />
           </form>
           <section className="main__summary">
