@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import App from "../App";
 import ItemCost from "./ItemCost";
+import '../App.css';
+import CartTotal from './CartTotal';
 
 class CartSummary extends Component {
   render() {
@@ -15,7 +18,13 @@ class CartSummary extends Component {
         </div>
       );
     });
-    return summary;
+    return (
+      <section className="main__summary">
+        <h2>Your Cart</h2>
+        {summary}
+        <CartTotal selected={this.props.selected} />
+      </section>
+    );
   }
 }
 

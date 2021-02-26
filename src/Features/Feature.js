@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import slugify from "slugify";
 import FeatureTitle from "./FeatureTitle";
 import FeatureOption from "./FeatureOption";
+import "../App.css";
 
 class Feature extends Component {
   render() {
@@ -17,7 +18,7 @@ class Feature extends Component {
               className="feature__option"
               name={slugify(feature)}
               checked={item.name === this.props.features[feature].name}
-              onChange={e => this.props.selected(feature, item)}
+              onChange={(e) => this.props.selected(feature, item)}
             />
             <FeatureOption
               itemHash={itemHash}
@@ -35,7 +36,12 @@ class Feature extends Component {
         />
       );
     });
-    return features;
+    return (
+      <form className="main__form">
+        <h2>Customize Your Laptop</h2>
+        {features}
+      </form>
+    );
   }
 }
 

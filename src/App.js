@@ -3,7 +3,7 @@ import "./App.css";
 import Feature from "./Features/Feature";
 import CartSummary from "./Cart/CartSummary";
 import CartTotal from "./Cart/CartTotal";
-import Header from './Header/Header';
+import Header from "./Header/Header";
 
 class App extends Component {
   state = {
@@ -40,23 +40,18 @@ class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <form className="main__form">
-            <h2>Customize Your Laptop</h2>
-            <Feature
-              features={this.props.features}
-              selected={(feature, newValue) => this.updateFeature(feature, newValue)}
-              state={this.state.selected}
-            />
-          </form>
-          <section className="main__summary">
-            <h2>Your Cart</h2>
-            <CartSummary selected={this.state.selected} />
-            <CartTotal selected={this.state.selected} />
-          </section>
+          <Feature
+            features={this.props.features}
+            selected={(feature, newValue) =>
+              this.updateFeature(feature, newValue)
+            }
+            state={this.state.selected}
+          />
+          <CartSummary selected={this.state.selected} />
         </main>
       </div>
     );
   }
-} 
+}
 
 export default App;
