@@ -5,8 +5,9 @@ import React, { Component } from "react";
 import slugify from "slugify";
 
 import "./App.css";
-import Feature from "./Feature";
-import CartSummary from "./CartSummary";
+import Feature from "./Features/Feature";
+import CartSummary from "./Cart/CartSummary";
+import CartTotal from "./Cart/CartTotal";
 //import CartTotal from "./CartTotal";
 
 // This object will allow us to
@@ -47,11 +48,6 @@ class App extends Component {
   };
 
   render() {
-    const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
-
     return (
       <div className="App">
         <header>
@@ -72,10 +68,7 @@ class App extends Component {
             <h2>Your Cart</h2>
             <CartSummary selected={this.state.selected} />
             <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
+              <CartTotal selected={this.state.selected} />
             </div>
           </section>
         </main>
