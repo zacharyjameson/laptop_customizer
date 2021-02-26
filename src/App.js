@@ -44,7 +44,7 @@ class App extends Component {
             <h2>Customize Your Laptop</h2>
             <Feature
               features={this.props.features}
-              onChange={(feature, newValue) => this.updateFeature(feature, newValue)}
+              selected={(feature, newValue) => this.updateFeature(feature, newValue)}
               state={this.state.selected}
             />
           </form>
@@ -57,6 +57,6 @@ class App extends Component {
       </div>
     );
   }
-}
+} 
 
 export default App;

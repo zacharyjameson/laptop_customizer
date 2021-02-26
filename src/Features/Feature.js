@@ -17,7 +17,7 @@ class Feature extends Component {
               className="feature__option"
               name={slugify(feature)}
               checked={item.name === this.props.features[feature].name}
-              onChange={this.props.onChange}
+              onChange={e => this.props.selected(feature, item)}
             />
             <FeatureOption
               itemHash={itemHash}
