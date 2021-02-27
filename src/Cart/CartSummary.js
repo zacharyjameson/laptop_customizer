@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import App from "../App";
 import ItemCost from "./ItemCost";
-import '../App.css';
-import CartTotal from './CartTotal';
+import "../App.css";
+import CartTotal from "./CartTotal";
+import CartOption from './CartOption';
 
 class CartSummary extends Component {
   render() {
@@ -11,11 +12,12 @@ class CartSummary extends Component {
       const selectedOption = this.props.selected[feature];
       console.log(selectedOption);
       return (
-        <div className="summary__option" key={featureHash}>
-          <div className="summary__option__label">{feature}</div>
-          <div className="summary__option__value">{selectedOption.name}</div>
-          <ItemCost selectedOption={selectedOption.cost} />
-        </div>
+        <CartOption
+          featureHash={featureHash}
+          feature={feature}
+          optionName={selectedOption.name}
+          optionCost={selectedOption.cost}
+        />
       );
     });
     return (
